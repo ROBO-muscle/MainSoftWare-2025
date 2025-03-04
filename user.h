@@ -22,16 +22,14 @@ extern "C" {
 //#define LED7 LATEbits.LATE0
 #define LED8 LATDbits.LATD7
 #define JYRO (((i2c_data[1]*256+i2c_data[0])/16)-(jyrof-180) - 180)
-#define rudder_funk rudder(JYRO,15*LINE_flag,0,(!LINE_flag)*LINE+LINE_flag*IR_Data*1.6,(!LINE_flag)*0x1000+(LINE_flag)*0xa00)
-#define hold_ball (ADC1BUF0<500)
+#define rudder_funk rudder(JYRO,15*LINE_flag,0,(!LINE_flag)*LINE+LINE_flag*IR_Data*(1+ball_flag*0.5),(!LINE_flag)*(!(IR_total==0))*0x1000+(LINE_flag)*0xa00)
+#define hold_ball (ADC1BUF0<10)
 #define LINE_num 15
 #define LINE (atan2(LINEx_vec,LINEy_vec)/3.141592*180)
 #define KICK LATAbits.LATA15
-    
     
 #ifdef	__cplusplus
 }
 #endif
 
 #endif	/* USER_H */
-

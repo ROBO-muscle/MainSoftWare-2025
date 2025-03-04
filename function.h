@@ -20,8 +20,11 @@ void I2C_communication();
 
 uint16_t IR_read();
 
-void TMR2_setup ();
-void TMR3_setup ();
+void TMR2_setup();
+void TMR3_setup();
+
+void TMR3_start();
+void TMR3_stop();
 
 #ifdef	__cplusplus
 }

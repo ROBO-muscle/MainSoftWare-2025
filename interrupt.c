@@ -5,6 +5,7 @@
 #include "wheel.h"
 #define FCY 64000000
 #include "libpic30.h"
+#include "cam.h"
 #include <stdbool.h>
 extern uint8_t i2c_data[8];
 extern uint8_t jyrof;
@@ -15,6 +16,9 @@ int IR_flag = 0;
 extern bool LINE_flag;
 extern int LINEx_vec;
 extern int LINEy_vec;
+extern bool ball_flag;
+uint8_t IR_sum[16] , now = 0;
+extern uint16_t IR_total;
 
 void __attribute__((interrupt,no_auto_psv)) _AD1Interrupt (void){
     IFS0bits.AD1IF = 0;
@@ -25,6 +29,9 @@ void __attribute__((interrupt,no_auto_psv)) _U1RXInterrupt (void){
 }
 
 void __attribute__((interrupt,no_auto_psv)) _U2RXInterrupt (void){
+    LED3 = ~LED3;
+    uint8_t data = U2RXREG;
+    Receive_from_cam(data);
     IFS1bits.U2RXIF = 0;
 }
 
@@ -49,14 +56,11 @@ void __attribute__((interrupt,no_auto_psv)) _CNInterrupt (void){
     if((!(PORTBbits.RB4&&PORTBbits.RB5&&PORTCbits.RC1&&PORTEbits.RE7)) && (LINEx_vec==0)){
         LINEx_vec=LINE_num*(PORTBbits.RB4&&PORTBbits.RB5)-LINE_num*(PORTCbits.RC1&&PORTEbits.RE7);
     }
-    rudder_funk;
+//    rudder_funk;
     LINEx_vec+=(LINEx_vec<0)-(0<LINEx_vec);
     LINEy_vec+=(LINEy_vec<0)-(0<LINEy_vec);
     IFS1bits.CNIF = 0;
 }
-
-uint8_t IR_sum[16] , now = 0;
-extern uint16_t IR_total;
 
 void __attribute__((interrupt,no_auto_psv)) _T3Interrupt (void){
     IFS0bits.T3IF = 0;
@@ -98,6 +102,5 @@ void __attribute__((interrupt,no_auto_psv)) _T3Interrupt (void){
             IR_total += IR_sum[i];
             IR_sum[i] = 0;
         }
-        LED3=~LED3;
     }
 }

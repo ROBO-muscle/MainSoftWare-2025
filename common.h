@@ -19,9 +19,11 @@ extern "C" {
 #define deg(angle) (angle*pi/180)
 #define rad(angle) (angle*180/pi)
     
-#define MSB16(B) B >> 8
-#define LSB16(B) B & 0x00ff    
-    
+#define MSB16(B) (B >> 8)
+#define LSB16(B) (B & 0x00ff)
+
+#define clamp(x, y) ((x) > (y) ? (y) : ((x) < -(y) ? -(y) : (x))) // max(-y,min(x,y))
+
 #ifdef	__cplusplus
 }
 #endif

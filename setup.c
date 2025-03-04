@@ -13,8 +13,8 @@
 void setup(){
     OSC_set();
     pin_set();
-//    UART1_setup(115200);
-//    UART2_setup(115200);
+    UART1_setup(115200);
+    UART2_setup(115200);
 //    UART3_setup(115200);
     OC1_setup();
     OC2_setup();
@@ -61,13 +61,13 @@ void pin_set(){
     TRISF = 0xffff;
     TRISG = 0xffff;
     
-//  ESP32S3
+//  ESP32S3 | UART1
     TRISFbits.TRISF2  = 0;
     RPOR8bits.RP98R = 0b000001;
     TRISFbits.TRISF8  = 1;
     RPINR18bits.U1RXR = 104;
     
-//  UART2
+//  OPENMV | UART2
     TRISFbits.TRISF13  = 0;
     RPOR12bits.RP109R  = 0b000011;
     TRISFbits.TRISF12  = 1;

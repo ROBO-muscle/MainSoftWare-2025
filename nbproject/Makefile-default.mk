@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c function.c setup.c wheel.c interrupt.c peripheral.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c function.c setup.c wheel.c interrupt.c peripheral.c cam.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/function.o ${OBJECTDIR}/setup.o ${OBJECTDIR}/wheel.o ${OBJECTDIR}/interrupt.o ${OBJECTDIR}/peripheral.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/function.o.d ${OBJECTDIR}/setup.o.d ${OBJECTDIR}/wheel.o.d ${OBJECTDIR}/interrupt.o.d ${OBJECTDIR}/peripheral.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/function.o ${OBJECTDIR}/setup.o ${OBJECTDIR}/wheel.o ${OBJECTDIR}/interrupt.o ${OBJECTDIR}/peripheral.o ${OBJECTDIR}/cam.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/function.o.d ${OBJECTDIR}/setup.o.d ${OBJECTDIR}/wheel.o.d ${OBJECTDIR}/interrupt.o.d ${OBJECTDIR}/peripheral.o.d ${OBJECTDIR}/cam.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/function.o ${OBJECTDIR}/setup.o ${OBJECTDIR}/wheel.o ${OBJECTDIR}/interrupt.o ${OBJECTDIR}/peripheral.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/function.o ${OBJECTDIR}/setup.o ${OBJECTDIR}/wheel.o ${OBJECTDIR}/interrupt.o ${OBJECTDIR}/peripheral.o ${OBJECTDIR}/cam.o
 
 # Source Files
-SOURCEFILES=main.c function.c setup.c wheel.c interrupt.c peripheral.c
+SOURCEFILES=main.c function.c setup.c wheel.c interrupt.c peripheral.c cam.c
 
 
 
@@ -125,6 +125,12 @@ ${OBJECTDIR}/peripheral.o: peripheral.c  .generated_files/flags/default/a0df3ddd
 	@${RM} ${OBJECTDIR}/peripheral.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  peripheral.c  -o ${OBJECTDIR}/peripheral.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/peripheral.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
+${OBJECTDIR}/cam.o: cam.c  .generated_files/flags/default/d57ac3395b2c66c8f2eeb8a967e7b9caa370143e .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/cam.o.d 
+	@${RM} ${OBJECTDIR}/cam.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  cam.c  -o ${OBJECTDIR}/cam.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/cam.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
 else
 ${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/66be012eeec62bba53227ab007e2aab60e6480a7 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
@@ -161,6 +167,12 @@ ${OBJECTDIR}/peripheral.o: peripheral.c  .generated_files/flags/default/b4254150
 	@${RM} ${OBJECTDIR}/peripheral.o.d 
 	@${RM} ${OBJECTDIR}/peripheral.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  peripheral.c  -o ${OBJECTDIR}/peripheral.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/peripheral.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/cam.o: cam.c  .generated_files/flags/default/e7b30dd54e8ad9cefed26e13bc99deee961bda50 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/cam.o.d 
+	@${RM} ${OBJECTDIR}/cam.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  cam.c  -o ${OBJECTDIR}/cam.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/cam.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 endif
 

@@ -63,12 +63,10 @@ int main(int argc, char** argv) {
     LATAbits.LATA15 = 0;
 //    OC10R = 0x1000;
     __delay_ms(500);
-
     while(1){
         I2C_communication(bno);
         __delay_ms(5);
-
-        rudder(JYRO,30,500,0,0);
+        rudder(JYRO,30,0x500,0,0);
     }
     return (EXIT_SUCCESS);
 }
